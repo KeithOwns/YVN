@@ -120,6 +120,57 @@ function FeatureCard({ icon, title, description }) {
 
 
 function InductionForm({ onBack }) {
+  const [name, setName] = useState('');
+  const [goal, setGoal] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !goal) return;
+
+    setIsSubmitting(true);
+
+    // Create a text file with the form data
+    const data = `Name: ${name}\nGoal: ${goal}\nDate: ${new Date().toLocaleString()}`;
+    const blob = new Blob([data], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary link to trigger download
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'induction_profile.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Simulate network request for UI effect
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+    }, 1500);
+  };
+
+  if (isSuccess) {
+    return (
+      <div className="min-h-screen pt-20 pb-12 px-6 flex items-center justify-center">
+        <div className="max-w-xl w-full bg-white/5 border border-white/10 p-10 rounded-3xl text-center animate-in zoom-in-95 duration-500">
+          <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 size={32} className="text-emerald-500" />
+          </div>
+          <h2 className="text-3xl font-black mb-4 italic uppercase tracking-tighter">Induction Complete</h2>
+          <p className="text-neutral-400 mb-8 leading-relaxed">
+            Welcome to <strong className="text-white">Vibe Engineering</strong>, {name}.<br />
+            Your profile has been secured. An agent will verify your audit request shortly.
+          </p>
+          <button onClick={onBack} className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-all">
+            Return to HQ
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen pt-20 pb-12 px-6">
       <div className="max-w-xl mx-auto">
@@ -128,19 +179,41 @@ function InductionForm({ onBack }) {
         </button>
         <div className="bg-white/5 border border-white/10 p-10 rounded-3xl">
           <h2 className="text-3xl font-black mb-6 italic uppercase tracking-tighter">New Client Intake</h2>
-          <div className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Name</label>
-              <input className="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-indigo-500" placeholder="Keith T." />
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-indigo-500 transition-colors text-white"
+                placeholder="Keith T."
+                required
+              />
             </div>
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Project Goal</label>
-              <textarea className="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-indigo-500" placeholder="Refactoring my vibe-coded MVP..."></textarea>
+              <textarea
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
+                className="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-indigo-500 transition-colors text-white h-32"
+                placeholder="Refactoring my vibe-coded MVP..."
+                required
+              ></textarea>
             </div>
-            <button className="w-full py-4 bg-indigo-600 font-bold rounded-xl hover:bg-indigo-500 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)]">
-              Submit Profile
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full py-4 bg-indigo-600 font-bold rounded-xl hover:bg-indigo-500 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <>
+                  <Cpu className="animate-spin" size={20} /> Processing Profile...
+                </>
+              ) : (
+                "Submit Profile"
+              )}
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

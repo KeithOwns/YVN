@@ -64,13 +64,28 @@ const completedSteps = [
         title: "Node.js Runtime Installation",
         description: "installed the Node.js runtime environment to enable local development and package management.",
         details: "User verified installation of Node.js LTS."
+    },
+    {
+        id: 9,
+        title: "Vercel Deployment",
+        description: "Connected GitHub repo to Vercel for automation cloud hosting and SSL certification.",
+        details: "Deployed production build to https://yvn-zeta.vercel.app/."
+    },
+    {
+        id: 10,
+        title: "Squarespace Integration",
+        description: "Embedded the Vercel production URL into youvibenow.com via an iframe Code Block.",
+        details: "Generated responsive iframe code and successfully embedded on client site."
+    },
+    {
+        id: 11,
+        title: "Functionality Audit",
+        description: "Executed a full-stack test of the Induction Form and mobile responsiveness.",
+        details: "Verified local Induction Form state, file export functionality, and responsive layout."
     }
 ];
 
 const futureSteps = [
-    { id: 9, title: "Vercel Deployment", action: "Connect GitHub repo to Vercel for automated cloud hosting and SSL certification." },
-    { id: 10, title: "Squarespace Integration", action: "Embed the Vercel production URL into youvibenow.com via an iframe Code Block." },
-    { id: 11, title: "Functionality Audit", action: "Execute a full-stack test of the Induction Form and mobile responsiveness." },
     { id: 12, title: "Pilot Phase Launch", action: "Initiate the 'Vibe Auditor' lead magnet campaign for Beta Client #001." }
 ];
 
@@ -91,7 +106,7 @@ export default function Roadmap({ onBack }) {
                 {/* Header */}
                 <header className="mb-16">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold mb-6 uppercase tracking-widest">
-                        Project Log: 2026-001 | UPDATED
+                        Project Log: 2026-001 | PHASE 1 COMPLETE
                     </div>
                     <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase italic">
                         YouVibeNow <br /><span className="text-indigo-500">Roadmap</span>
@@ -186,7 +201,7 @@ export default function Roadmap({ onBack }) {
                         <div className="flex items-center gap-2 mb-4 text-white font-bold">
                             <Globe size={18} /> Host
                         </div>
-                        <p className="text-xs text-neutral-500 uppercase tracking-widest">Vercel (In Transit)</p>
+                        <p className="text-xs text-neutral-500 uppercase tracking-widest">Vercel (Live)</p>
                     </div>
                     <div>
                         <div className="flex items-center gap-2 mb-4 text-white font-bold">
