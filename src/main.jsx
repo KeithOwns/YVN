@@ -1,7 +1,9 @@
-﻿import React, { useState } from 'react';
+﻿```javascript
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Zap, ShieldCheck, Users, Cpu, ArrowRight, CheckCircle2, MessageSquare, ChevronLeft } from 'lucide-react';
-
+import { Zap, ShieldCheck, Users, Cpu, ArrowRight, CheckCircle2, MessageSquare, ChevronLeft, Map } from 'lucide-react';
+import Roadmap from './Roadmap';
+import './index.css';
 
 /**
  * YOUVIBENOW: VIBE ENGINEERING EDITION
@@ -16,7 +18,9 @@ function App() {
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-indigo-500/30">
       {view === 'home' ? (
-        <LandingPage onStart={() => setView('onboarding')} />
+        <LandingPage onStart={() => setView('onboarding')} onRoadmap={() => setView('roadmap')} />
+      ) : view === 'roadmap' ? (
+        <Roadmap onBack={() => setView('home')} />
       ) : (
         <InductionForm onBack={() => setView('home')} />
       )}
@@ -25,7 +29,7 @@ function App() {
 }
 
 
-function LandingPage({ onStart }) {
+function LandingPage({ onStart, onRoadmap }) {
   return (
     <div className="animate-in fade-in duration-700">
       <nav className="border-b border-white/5 bg-black/50 backdrop-blur-md sticky top-0 z-50">
@@ -36,12 +40,20 @@ function LandingPage({ onStart }) {
             </div>
             <span className="text-xl font-bold tracking-tight">YouVibeNow</span>
           </div>
-          <button 
-            onClick={onStart}
-            className="px-5 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-neutral-200 transition-all"
-          >
-            Induction
-          </button>
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={onRoadmap}
+              className="px-5 py-2 text-neutral-400 text-sm font-medium hover:text-white transition-all flex items-center gap-2"
+            >
+              <Map size={16} /> Roadmap
+            </button>
+            <button 
+              onClick={onStart}
+              className="px-5 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-neutral-200 transition-all"
+            >
+              Induction
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -55,12 +67,20 @@ function LandingPage({ onStart }) {
           <p className="text-lg md:text-xl text-neutral-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
             From fragile "Vibe Coding" to resilient **Vibe Engineering**. Professional education for the 2026 technical landscape.
           </p>
-          <button 
-            onClick={onStart}
-            className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 mx-auto transition-all group shadow-[0_0_30px_rgba(79,70,229,0.3)]"
-          >
-            Start Your Induction <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <button 
+              onClick={onStart}
+              className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all group shadow-[0_0_30px_rgba(79,70,229,0.3)]"
+            >
+              Start Your Induction <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button 
+              onClick={onRoadmap}
+              className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all border border-white/10"
+            >
+               View Roadmap
+            </button>
+          </div>
         </div>
       </header>
 
@@ -132,3 +152,4 @@ function InductionForm({ onBack }) {
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<App />);
+```
