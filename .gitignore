@@ -1,0 +1,5 @@
+﻿Ignore local environment files and dependencies
+node_modules
+dist
+.env
+.DS_Store
