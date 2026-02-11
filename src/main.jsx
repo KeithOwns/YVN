@@ -1,5 +1,4 @@
-﻿```javascript
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Zap, ShieldCheck, Users, Cpu, ArrowRight, CheckCircle2, MessageSquare, ChevronLeft, Map } from 'lucide-react';
 import Roadmap from './Roadmap';
@@ -41,13 +40,13 @@ function LandingPage({ onStart, onRoadmap }) {
             <span className="text-xl font-bold tracking-tight">YouVibeNow</span>
           </div>
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={onRoadmap}
               className="px-5 py-2 text-neutral-400 text-sm font-medium hover:text-white transition-all flex items-center gap-2"
             >
               <Map size={16} /> Roadmap
             </button>
-            <button 
+            <button
               onClick={onStart}
               className="px-5 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-neutral-200 transition-all"
             >
@@ -68,17 +67,17 @@ function LandingPage({ onStart, onRoadmap }) {
             From fragile "Vibe Coding" to resilient **Vibe Engineering**. Professional education for the 2026 technical landscape.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            <button 
+            <button
               onClick={onStart}
               className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all group shadow-[0_0_30px_rgba(79,70,229,0.3)]"
             >
               Start Your Induction <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button 
+            <button
               onClick={onRoadmap}
               className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all border border-white/10"
             >
-               View Roadmap
+              View Roadmap
             </button>
           </div>
         </div>
@@ -87,17 +86,17 @@ function LandingPage({ onStart, onRoadmap }) {
 
       <section className="py-24 px-6 bg-neutral-900/30 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-          <FeatureCard 
+          <FeatureCard
             icon={<ShieldCheck className="text-emerald-400" />}
             title="Technical Audit"
             description="Is your AI-generated MVP a 'slop' factory? We provide deep audits to stabilize your architecture before you scale."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Cpu className="text-indigo-400" />}
             title="Agentic Workflows"
             description="Move beyond prompting. We teach you to orchestrate multi-agent systems for autonomous development."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Users className="text-cyan-400" />}
             title="Strategic Mentorship"
             description="High-ticket coaching for founders who need to understand the 'Engineering' behind the 'Vibe'."
@@ -152,4 +151,3 @@ function InductionForm({ onBack }) {
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<App />);
-```

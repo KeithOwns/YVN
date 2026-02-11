@@ -52,15 +52,26 @@ const completedSteps = [
         title: "Environment Restoration & Roadmap Integration",
         description: "Restored the missing Vite/React/Tailwind environment configuration and integrated the Tutorial file as a core application component.",
         details: "Created package.json, vite.config.js, index.html. Converted YVN_Tutorial.html to src/Roadmap.jsx and established routing."
+    },
+    {
+        id: 7,
+        title: "Initial GitHub Sync",
+        description: "Established the source of truth by syncing local code to the remote repository.",
+        details: "Pushed 'main' branch to 'https://github.com/KeithOwns/YVN.git' after configuring the remote."
+    },
+    {
+        id: 8,
+        title: "Node.js Runtime Installation",
+        description: "installed the Node.js runtime environment to enable local development and package management.",
+        details: "User verified installation of Node.js LTS."
     }
 ];
 
 const futureSteps = [
-    { id: 7, title: "Initial GitHub Sync", action: "Run 'git push -u origin main --force' in Git Bash to establish the remote source of truth." },
-    { id: 8, title: "Vercel Deployment", action: "Connect GitHub repo to Vercel for automated cloud hosting and SSL certification." },
-    { id: 9, title: "Squarespace Integration", action: "Embed the Vercel production URL into youvibenow.com via an iframe Code Block." },
-    { id: 10, title: "Functionality Audit", action: "Execute a full-stack test of the Induction Form and mobile responsiveness." },
-    { id: 11, title: "Pilot Phase Launch", action: "Initiate the 'Vibe Auditor' lead magnet campaign for Beta Client #001." }
+    { id: 9, title: "Vercel Deployment", action: "Connect GitHub repo to Vercel for automated cloud hosting and SSL certification." },
+    { id: 10, title: "Squarespace Integration", action: "Embed the Vercel production URL into youvibenow.com via an iframe Code Block." },
+    { id: 11, title: "Functionality Audit", action: "Execute a full-stack test of the Induction Form and mobile responsiveness." },
+    { id: 12, title: "Pilot Phase Launch", action: "Initiate the 'Vibe Auditor' lead magnet campaign for Beta Client #001." }
 ];
 
 export default function Roadmap({ onBack }) {
